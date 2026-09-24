@@ -138,7 +138,7 @@ LB = """<div class="lb" role="dialog" aria-modal="true" aria-label="Photo agrand
 
 END = '<script src="js/main.js?v=1" defer></script>\n</body>\n</html>\n'
 
-SERVICES = ["Peinture intérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Homme à tout faire / aide aux aînés", "Autre"]
+SERVICES = ["Peinture intérieure", "Peinture extérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Homme à tout faire / aide aux aînés", "Autre"]
 
 
 def form(title="Demande de devis"):
@@ -182,7 +182,7 @@ HOURS = """<div class="hours"><table>
 
 SCHEMA = """<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HousePainter","name":"GS Service - Gotsevski",
-"description":"Peinture, façades, rénovation et homme à tout faire pour les aînés à Puidoux et dans le Lavaux.",
+"description":"Peinture intérieure et extérieure, façades, rénovation et homme à tout faire pour les aînés à Puidoux et dans le Lavaux.",
 "url":"%s","telephone":"+41 76 690 06 63","email":"s.gocevski@outlook.com","image":"%simg/chalet-fini.webp",
 "address":{"@type":"PostalAddress","streetAddress":"Chemin de Publoz 15","postalCode":"1070","addressLocality":"Puidoux","addressRegion":"VD","addressCountry":"CH"},
 "geo":{"@type":"GeoCoordinates","latitude":46.4907,"longitude":6.7631},
@@ -201,8 +201,8 @@ def img(name, alt, cls="", sizes="100vw", eager=False):
 
 # ---------- HOME ----------
 svc_rows = [
-    ("Peinture", "Murs, plafonds, boiseries, portes : peinture intérieure soignée, sur supports bien préparés. Pour une ambiance apaisante, une touche audacieuse ou simplement un coup de frais.",
-     ["Murs & plafonds", "Boiseries", "Portes", "Cages d’escalier"], "plafond-peinture", "Plafond et poutres repeints en blanc"),
+    ("Peinture intérieure & extérieure", "À l’intérieur : murs, plafonds, boiseries, portes. À l’extérieur : murs, volets, balcons, portails, boiseries. Une peinture soignée, sur supports bien préparés. Pour une ambiance apaisante, une touche audacieuse ou simplement un coup de frais.",
+     ["Murs & plafonds", "Boiseries & portes", "Murs extérieurs", "Volets & balcons", "Portails & clôtures"], "plafond-peinture", "Plafond et poutres repeints en blanc"),
     ("Rénovation", "Des petites retouches aux projets d’envergure : préparation des supports, enduits, finitions. Une équipe qualifiée qui donne vie à vos idées.",
      ["Enduits & lissage", "Combles", "Salles de bain", "Terrasses bois"], "combles-renoves", "Combles rénovés avec parquet et murs blancs"),
     ("Façades", "Façades en bois, crépi et avant-toits : échafaudage sécurisé, préparation et protection des abords, puis traitement et peinture. Votre maison retrouve son allure, et elle est protégée pour les années à venir.",
@@ -220,17 +220,17 @@ svc_html = "\n".join(
 </article>""" for i, (t, d, tags, im, alt) in enumerate(svc_rows)
 )
 
-ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Façades bois", "Rénovation", "Crépi", "Avant-toits", "Boiseries", "Aide aux aînés", "Plafonds", "Salles de bain"])
+ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Peinture extérieure", "Façades bois", "Rénovation", "Crépi", "Avant-toits", "Boiseries", "Aide aux aînés", "Plafonds", "Salles de bain"])
 
 home = head(
     "GS Service – Gotsevski | Peintre, façades & rénovation à Puidoux",
-    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture intérieure, façades, rénovation et homme à tout faire pour les aînés. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
+    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture intérieure et extérieure, façades, rénovation et homme à tout faire pour les aînés. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
     "", SCHEMA) + header("home") + f"""<main>
 <section class="hero"><div class="wrap hero-grid">
   <div>
     <span class="eyebrow">Peinture · Façades · Rénovation · Puidoux</span>
     <h1>Peinture, façades, rénovation. <span class="stroke">Bien fait</span>, du début à la fin.</h1>
-    <p class="lead">GS Service Gotsevski, c’est votre partenaire tout-en-un dans le Lavaux : on repeint vos intérieurs, on remet vos façades à neuf et on rénove vos pièces. Un seul numéro à appeler.</p>
+    <p class="lead">GS Service Gotsevski, c’est votre partenaire tout-en-un dans le Lavaux : on repeint vos intérieurs comme vos extérieurs, on remet vos façades à neuf et on rénove vos pièces. Un seul numéro à appeler.</p>
     <div class="hero-actions">
       <a class="btn btn-green" href="{TEL}">{I['phone']} Appeler le 076 690 06 63</a>
       <a class="btn btn-line" href="#devis">Demander un devis {I['arrow']}</a>
