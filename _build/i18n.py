@@ -265,6 +265,12 @@ T = [
 ("Protection plastique d’une pièce", "Room covered in plastic", "Raum mit Folie abgedeckt"),
 ("Passerelle le long d’une façade en bois", "Walkway along a timber façade", "Laufsteg entlang einer Holzfassade"),
 
+# business card
+("Carte de visite de GS Service – Gotsevski : rénovation et peinture, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux",
+ "GS Service – Gotsevski business card: renovation and painting, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux",
+ "Visitenkarte von GS Service – Gotsevski: Renovation und Malerarbeiten, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux"),
+("Notre carte de visite", "Our business card", "Unsere Visitenkarte"),
+
 # contact page
 ("Un appel suffit pour démarrer.", "One call is all it takes to get started.", "Ein Anruf genügt für den Start."),
 ("Appelez, écrivez sur WhatsApp ou remplissez le formulaire. On vous répond pour fixer une visite et établir votre devis.", "Call, write on WhatsApp or fill in the form. We will reply to arrange a visit and prepare your quote.", "Rufen Sie an, schreiben Sie auf WhatsApp oder füllen Sie das Formular aus. Wir melden uns, um eine Besichtigung zu vereinbaren und Ihre Offerte zu erstellen."),

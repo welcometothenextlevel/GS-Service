@@ -238,6 +238,15 @@ p{margin:0 0 1em}
 .towns span{border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14.5px}
 @media (max-width:860px){.about{grid-template-columns:1fr}}
 
+/* business card */
+.bizcard{margin:0;background:var(--green-soft);border-radius:var(--radius);padding:clamp(28px,5vw,56px) clamp(20px,4vw,48px) 22px;text-align:center}
+.bizcard img{width:100%;max-width:560px;height:auto;margin:0 auto;border-radius:10px;box-shadow:0 24px 40px -20px rgba(19,26,22,.55),0 2px 6px rgba(19,26,22,.12);transform:rotate(-2deg);transition:transform .4s}
+.bizcard:hover img{transform:rotate(0) scale(1.02)}
+.bizcard figcaption{margin-top:22px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.bizcard-sm{margin-top:18px;padding:28px 22px 18px}
+.bizcard-sm img{max-width:420px}
+@media (prefers-reduced-motion:reduce){.bizcard img{transform:none}}
+
 /* quote form */
 .quote-sec{background:var(--paper-2)}
 .qgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,70px);align-items:start}

@@ -43,7 +43,7 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 @@ALT@@
 {extra}</head>
 <body>
@@ -329,7 +329,7 @@ home = head(
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap about">
-  <div class="about-img rv">{img("facade-crepi", "Façade crépie avec échafaudage et volets", sizes="(max-width:860px) 100vw, 50vw")}</div>
+  <div class="rv"><figure class="bizcard"><img src="img/carte-de-visite.webp" width="724" height="470" alt="Carte de visite de GS Service – Gotsevski : rénovation et peinture, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux" loading="lazy" decoding="async"><figcaption>Notre carte de visite</figcaption></figure></div>
   <div class="rv">
     <span class="eyebrow">L’entreprise</span>
     <h2>Une entreprise locale, installée à Puidoux.</h2>
@@ -438,6 +438,7 @@ contact = head(
       <a class="c-card" href="{MAIL}"><small>E-mail</small><b style="font-size:17px">s.gocevski@outlook.com</b><span>Réponse par e-mail</span></a>
       <a class="c-card" href="https://www.google.com/maps/search/?api=1&query=Chemin+de+Publoz+15,+1070+Puidoux" target="_blank" rel="noopener"><small>Adresse</small><b>Chemin de Publoz 15</b><span>1070 Puidoux VD · Itinéraire ↗</span></a>
     </div>
+    <figure class="bizcard bizcard-sm"><img src="img/carte-de-visite.webp" width="724" height="470" alt="Carte de visite de GS Service – Gotsevski : rénovation et peinture, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux" loading="lazy" decoding="async"><figcaption>Notre carte de visite</figcaption></figure>
     <div class="map"><iframe title="Carte : Chemin de Publoz 15, 1070 Puidoux" loading="lazy" src="https://www.google.com/maps?q=Chemin+de+Publoz+15,+1070+Puidoux&z=15&output=embed"></iframe></div>
     <h3 style="font-size:22px;margin:32px 0 6px">Horaires</h3>
     {HOURS}
