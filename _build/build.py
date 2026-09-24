@@ -43,7 +43,7 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 @@ALT@@
 {extra}</head>
 <body>
@@ -142,7 +142,7 @@ LB = """<div class="lb" role="dialog" aria-modal="true" aria-label="Photo agrand
 </div>
 """
 
-END = '<script src="js/main.js?v=2" defer></script>\n</body>\n</html>\n'
+END = '<script src="js/main.js?v=3" defer></script>\n</body>\n</html>\n'
 
 SERVICES = ["Peinture intérieure", "Peinture extérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Homme à tout faire / aide aux aînés", "Autre"]
 
@@ -204,6 +204,45 @@ def img(name, alt, cls="", sizes="100vw", eager=False):
     return (f'<img src="img/{name}.webp" srcset="img/{name}-sm.webp 720w, img/{name}.webp 1400w" '
             f'sizes="{sizes}" alt="{alt}" {load} decoding="async"{(" class=" + chr(34) + cls + chr(34)) if cls else ""}>')
 
+
+
+def before_after(sec_style=""):
+    thumbs = [
+        ("avant-sous-face-2", "Sous-face écaillée, bois à nu par endroits"),
+        ("avant-sous-face-3", "Sous-face en cours de préparation"),
+        ("avant-sous-face-4", "Sous-face et chéneau en cuivre pendant les travaux"),
+        ("avant-sous-face-5", "Sous-face vue depuis l’échafaudage pendant les travaux"),
+    ]
+    th = "".join(
+        f'<a href="img/{n}.webp" data-caption="Avant – {alt}">{img(n, alt, sizes="(max-width:900px) 25vw, 160px")}</a>'
+        for n, alt in thumbs
+    )
+    return f"""<section class="section ba-sec" id="avant-apres"{sec_style}><div class="wrap">
+  <div class="section-head">
+    <div><span class="eyebrow">Avant / après</span><h2>Une sous-face d’avant-toit, remise à neuf.</h2></div>
+    <p>Peinture écaillée, bois à nu par endroits. On a préparé et repeint toute la sous-face, sous échafaudage. Les photos montrent l’avant, les vidéos le résultat.</p>
+  </div>
+  <div class="ba">
+    <div class="ba-before rv">
+      <span class="ba-tag">Avant</span>
+      <div class="ba-grid" data-lb>
+        <a class="ba-main" href="img/avant-sous-face-1.webp" data-caption="Avant – Peinture écaillée sur toute la longueur de la sous-face">{img("avant-sous-face-1", "Sous-face d’avant-toit avec la peinture écaillée, avant les travaux", sizes="(max-width:900px) 100vw, 640px")}</a>
+        {th}
+      </div>
+    </div>
+    <div class="ba-after rv">
+      <span class="ba-tag ba-tag-after">Après</span>
+      <figure class="ba-video">
+        <video data-autoplay muted loop playsinline controls preload="none" poster="img/apres-sous-face-poster.webp" aria-label="Vidéo : la sous-face terminée, repeinte en blanc">
+          <source src="video/apres-sous-face.mp4" type="video/mp4">
+        </video>
+        <div class="ba-clip"><video data-autoplay muted loop playsinline preload="none" poster="img/apres-sous-face-court-poster.webp" aria-label="Court extrait : la façade et les volets après les travaux"><source src="video/apres-sous-face-court.mp4" type="video/mp4"></video></div>
+      </figure>
+    </div>
+  </div>
+  <div class="center-cta"><a class="btn btn-green" href="{TEL}">{I['phone']} Un chantier similaire ? Appelez-nous</a></div>
+</div></section>
+"""
 
 # ---------- HOME ----------
 svc_rows = [
@@ -285,7 +324,7 @@ home = head(
   </div>
 </div></section>
 
-<section class="section" id="realisations"><div class="wrap">
+""" + before_after() + f"""<section class="section" id="realisations" style="padding-top:0"><div class="wrap">
   <div class="section-head">
     <div><span class="eyebrow">Réalisations</span><h2>Nos chantiers, en photos.</h2></div>
     <p>Façades en bois, avant-toits, intérieurs, salles de bain et terrasses. Des photos de chantiers réels, prises par l’équipe.</p>
@@ -406,7 +445,7 @@ real = head(
   <h1>Des chantiers réels, photographiés sur place.</h1>
   <p>Façades de chalets, avant-toits, pièces repeintes, salles de bain, terrasses en bois. Cliquez sur une photo pour l’agrandir.</p>
 </div></section>
-<section style="padding-bottom:clamp(64px,9vw,110px)"><div class="wrap">
+""" + before_after(' style="padding-top:0"') + f"""<section style="padding-bottom:clamp(64px,9vw,110px)"><div class="wrap">
   <div class="filters" role="group" aria-label="Filtrer les photos">
     <button data-filter="all" aria-pressed="true">Tout ({len(gal)})</button>
     <button data-filter="ext" aria-pressed="false">Façades & extérieur</button>
@@ -477,7 +516,7 @@ def translate(html, lang):
     html = html.replace('"description":"Peinture intérieure et extérieure, façades, rénovation et homme à tout faire pour les aînés à Puidoux et dans le Lavaux."',
                         '"description":"' + SCHEMA_DESC[lang] + '"')
     # assets live one level up
-    html = re.sub(r'(?<=["\s,])(img|css|js)/', r"../\1/", html)
+    html = re.sub(r'(?<=["\s,])(img|css|js|video)/', r"../\1/", html)
     html = html.replace('href="favicon.svg"', 'href="../favicon.svg"')
     return html
 

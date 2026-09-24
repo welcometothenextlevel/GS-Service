@@ -271,6 +271,28 @@ T = [
  "Visitenkarte von GS Service – Gotsevski: Renovation und Malerarbeiten, 076 690 06 63, s.gocevski@outlook.com, Chemin de Publoz 15, 1070 Puidoux"),
 ("Notre carte de visite", "Our business card", "Unsere Visitenkarte"),
 
+# before / after
+("Avant / après", "Before / after", "Vorher / nachher"),
+("Une sous-face d’avant-toit, remise à neuf.", "A roof eave underside, restored.", "Eine Dachuntersicht, wie neu."),
+("Peinture écaillée, bois à nu par endroits. On a préparé et repeint toute la sous-face, sous échafaudage. Les photos montrent l’avant, les vidéos le résultat.",
+ "Peeling paint, bare wood in places. We prepared and repainted the whole underside from the scaffolding. The photos show the before, the videos the result.",
+ "Abblätternde Farbe, stellenweise blankes Holz. Wir haben die ganze Untersicht vom Gerüst aus vorbereitet und neu gestrichen. Die Fotos zeigen den Zustand vorher, die Videos das Ergebnis."),
+("Avant", "Before", "Vorher"),
+("Après", "After", "Nachher"),
+("Sous-face écaillée, bois à nu par endroits", "Peeling underside, bare wood in places", "Abblätternde Untersicht, stellenweise blankes Holz"),
+("Sous-face en cours de préparation", "Underside being prepared", "Untersicht in Vorbereitung"),
+("Sous-face et chéneau en cuivre pendant les travaux", "Underside and copper gutter during the works", "Untersicht und Kupferrinne während der Arbeiten"),
+("Sous-face vue depuis l’échafaudage pendant les travaux", "Underside seen from the scaffolding during the works", "Untersicht vom Gerüst aus während der Arbeiten"),
+("Avant – Sous-face écaillée, bois à nu par endroits", "Before – Peeling underside, bare wood in places", "Vorher – Abblätternde Untersicht, stellenweise blankes Holz"),
+("Avant – Sous-face en cours de préparation", "Before – Underside being prepared", "Vorher – Untersicht in Vorbereitung"),
+("Avant – Sous-face et chéneau en cuivre pendant les travaux", "Before – Underside and copper gutter during the works", "Vorher – Untersicht und Kupferrinne während der Arbeiten"),
+("Avant – Sous-face vue depuis l’échafaudage pendant les travaux", "Before – Underside seen from the scaffolding during the works", "Vorher – Untersicht vom Gerüst aus während der Arbeiten"),
+("Avant – Peinture écaillée sur toute la longueur de la sous-face", "Before – Peeling paint along the whole underside", "Vorher – Abblätternde Farbe entlang der ganzen Untersicht"),
+("Sous-face d’avant-toit avec la peinture écaillée, avant les travaux", "Roof eave underside with peeling paint, before the works", "Dachuntersicht mit abblätternder Farbe, vor den Arbeiten"),
+("Vidéo : la sous-face terminée, repeinte en blanc", "Video: the finished underside, repainted white", "Video: die fertige Untersicht, weiss gestrichen"),
+("Court extrait : la façade et les volets après les travaux", "Short clip: the façade and shutters after the works", "Kurzer Ausschnitt: Fassade und Fensterläden nach den Arbeiten"),
+("Un chantier similaire ? Appelez-nous", "A similar job? Call us", "Ähnliches Projekt? Rufen Sie an"),
+
 # contact page
 ("Un appel suffit pour démarrer.", "One call is all it takes to get started.", "Ein Anruf genügt für den Start."),
 ("Appelez, écrivez sur WhatsApp ou remplissez le formulaire. On vous répond pour fixer une visite et établir votre devis.", "Call, write on WhatsApp or fill in the form. We will reply to arrange a visit and prepare your quote.", "Rufen Sie an, schreiben Sie auf WhatsApp oder füllen Sie das Formular aus. Wir melden uns, um eine Besichtigung zu vereinbaren und Ihre Offerte zu erstellen."),

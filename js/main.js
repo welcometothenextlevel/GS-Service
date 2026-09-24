@@ -65,6 +65,17 @@ const io = "IntersectionObserver" in window
   : null;
 document.querySelectorAll(".rv").forEach((el) => (io ? io.observe(el) : el.classList.add("in")));
 
+// Before/after videos: play muted only while on screen (saves data on phones)
+const vids = document.querySelectorAll("video[data-autoplay]");
+if (vids.length && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const vo = new IntersectionObserver((entries) => entries.forEach((e) => {
+    const v = e.target;
+    if (e.isIntersecting) { v.play().catch(() => {}); }
+    else if (!v.paused) { v.pause(); }
+  }), { threshold: 0.35 });
+  vids.forEach((v) => vo.observe(v));
+}
+
 // Quote form → WhatsApp or e-mail, pre-filled
 document.querySelectorAll("form.form").forEach((form) => {
   const err = form.querySelector(".form-error");
