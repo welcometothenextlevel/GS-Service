@@ -6,6 +6,19 @@ const CONTACT = {
   email: "s.gocevski@outlook.com",
 };
 
+const LANG = (document.documentElement.lang || "fr").slice(0, 2);
+const TXT = {
+  fr: { open: "Ouvert maintenant · jusqu’à 17h", closed: "Fermé · laissez un message WhatsApp",
+        hello: "Bonjour, je souhaite un devis (via le site web).", name: "Nom", tel: "Téléphone", email: "E-mail",
+        svc: "Prestation(s)", place: "Lieu des travaux", when: "Délai souhaité", subject: "Demande de devis", site: "site web" },
+  en: { open: "Open now · until 5pm", closed: "Closed · send us a WhatsApp message",
+        hello: "Hello, I would like a quote (via the website).", name: "Name", tel: "Phone", email: "E-mail",
+        svc: "Service(s)", place: "Location", when: "Timing", subject: "Quote request", site: "website" },
+  de: { open: "Jetzt geöffnet · bis 17 Uhr", closed: "Geschlossen · schreiben Sie uns auf WhatsApp",
+        hello: "Guten Tag, ich möchte eine Offerte (über die Website).", name: "Name", tel: "Telefon", email: "E-Mail",
+        svc: "Leistung(en)", place: "Ort der Arbeiten", when: "Zeitraum", subject: "Offertanfrage", site: "Website" },
+}[LANG] || {};
+
 // Header border on scroll + mobile menu
 const header = document.querySelector(".header");
 const onScroll = () => header && header.classList.toggle("scrolled", window.scrollY > 8);
@@ -38,7 +51,7 @@ if (burger && nav) {
   const mins = parseInt(get("hour"), 10) * 60 + parseInt(get("minute"), 10);
   const open = day >= 1 && day <= 6 && mins >= 480 && mins < 1020;
   document.querySelectorAll("[data-status]").forEach((el) => {
-    el.textContent = open ? "Ouvert maintenant · jusqu’à 17h" : "Fermé · laissez un message WhatsApp";
+    el.textContent = open ? TXT.open : TXT.closed;
   });
   document.querySelectorAll(".open-dot").forEach((d) => d.classList.toggle("closed", !open));
   document.querySelectorAll(`.hours tr[data-day="${day}"]`).forEach((tr) => tr.classList.add("today"));
@@ -59,14 +72,14 @@ document.querySelectorAll("form.form").forEach((form) => {
     const d = new FormData(form);
     const services = d.getAll("service");
     const lines = [
-      "Bonjour, je souhaite un devis (via le site web).",
+      TXT.hello,
       "",
-      `Nom : ${d.get("name") || ""}`,
-      `Téléphone : ${d.get("tel") || ""}`,
-      d.get("email") ? `E-mail : ${d.get("email")}` : null,
-      services.length ? `Prestation(s) : ${services.join(", ")}` : null,
-      d.get("lieu") ? `Lieu des travaux : ${d.get("lieu")}` : null,
-      d.get("delai") ? `Délai souhaité : ${d.get("delai")}` : null,
+      `${TXT.name} : ${d.get("name") || ""}`,
+      `${TXT.tel} : ${d.get("tel") || ""}`,
+      d.get("email") ? `${TXT.email} : ${d.get("email")}` : null,
+      services.length ? `${TXT.svc} : ${services.join(", ")}` : null,
+      d.get("lieu") ? `${TXT.place} : ${d.get("lieu")}` : null,
+      d.get("delai") ? `${TXT.when} : ${d.get("delai")}` : null,
       "",
       d.get("message") || "",
     ].filter((l) => l !== null);
@@ -91,7 +104,7 @@ document.querySelectorAll("form.form").forEach((form) => {
   });
   form.querySelector("[data-mail]")?.addEventListener("click", () => {
     if (!valid()) return;
-    const subject = encodeURIComponent("Demande de devis – " + (form.elements.name.value || "site web"));
+    const subject = encodeURIComponent(TXT.subject + " – " + (form.elements.name.value || TXT.site));
     window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${encodeURIComponent(build())}`;
   });
   form.querySelectorAll("input").forEach((i) => i.addEventListener("input", () => i.classList.remove("input-bad")));

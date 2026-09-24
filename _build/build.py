@@ -19,6 +19,9 @@ I = {
 LOGO_MARK = '<span class="logo-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><text x="3" y="25" font-family="Archivo,sans-serif" font-weight="800" font-size="21" fill="#131a16" style="font-stretch:80%">GS</text><path d="M4 31c6-2.4 14-3 32-1.6" stroke="#131a16" stroke-width="4" stroke-linecap="round" fill="none"/></svg></span>'
 
 
+LANG_SWITCH = '''<nav class="lang {cls}" aria-label="Choisir la langue"><a href="@@FR@@" hreflang="fr" lang="fr"@@CUR_fr@@>FR</a><a href="@@EN@@" hreflang="en" lang="en"@@CUR_en@@>EN</a><a href="@@DE@@" hreflang="de" lang="de"@@CUR_de@@>DE</a></nav>'''
+
+
 def head(title, desc, path, extra=""):
     url = BASE + path
     return f"""<!doctype html>
@@ -40,7 +43,8 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
+@@ALT@@
 {extra}</head>
 <body>
 """
@@ -52,6 +56,7 @@ def header(active):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f"""<div class="topbar"><div class="wrap">
   <div><span class="open-dot"></span><span data-status>Lun–Sam · 8h00–17h00</span></div>
+  {LANG_SWITCH.replace("{cls}","lang-top")}
   <div class="tb-right">Puidoux · Lavaux · Riviera — <a href="{TEL}">076 690 06 63</a> · <a href="{MAIL}">s.gocevski@outlook.com</a></div>
 </div></div>
 <header class="header"><div class="wrap">
@@ -63,6 +68,7 @@ def header(active):
     {link('contact','Contact & devis','contact')}
   </nav>
   <div class="header-cta">
+    {LANG_SWITCH.replace("{cls}","lang-head")}
     <a class="btn btn-green" href="{TEL}" aria-label="Appeler le 076 690 06 63">{I['phone']}<span class="lbl">076 690 06 63</span></a>
     <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">{I['menu']}</button>
   </div>
@@ -136,7 +142,7 @@ LB = """<div class="lb" role="dialog" aria-modal="true" aria-label="Photo agrand
 </div>
 """
 
-END = '<script src="js/main.js?v=1" defer></script>\n</body>\n</html>\n'
+END = '<script src="js/main.js?v=2" defer></script>\n</body>\n</html>\n'
 
 SERVICES = ["Peinture intérieure", "Peinture extérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Homme à tout faire / aide aux aînés", "Autre"]
 
@@ -441,7 +447,66 @@ contact = head(
 </main>
 """ + FOOTER + DOCK + END
 
-(ROOT / "index.html").write_text(home)
-(ROOT / "realisations.html").write_text(real)
-(ROOT / "contact.html").write_text(contact)
+import re
+from i18n import T
+
+LANGS = {"fr": ("fr-CH", "fr_CH", ""), "en": ("en", "en_GB", "en/"), "de": ("de-CH", "de_CH", "de/")}
+IDX = {"en": 1, "de": 2}
+SCHEMA_DESC = {
+    "en": "Interior and exterior painting, façades, renovation and handyman help for seniors in Puidoux and Lavaux.",
+    "de": "Innen- und Aussenanstrich, Fassaden, Renovation und Hauswartdienste für Senioren in Puidoux und im Lavaux.",
+}
+
+
+def translate(html, lang):
+    table = {fr: row[IDX[lang]] for row in T for fr in [row[0]]}
+    parts = re.split(r"(<script[\s\S]*?</script>)", html)
+    def node(m):
+        lead, txt, trail = m.group(1), m.group(2), m.group(3)
+        return ">" + lead + table.get(txt, txt) + trail + "<"
+    def attr(m):
+        return f'{m.group(1)}="{table.get(m.group(2), m.group(2))}"'
+    out = []
+    for part in parts:
+        if not part.startswith("<script"):
+            part = re.sub(r">(\s*)([^<>]*?)(\s*)<", node, part)
+            part = re.sub(r'\b(alt|aria-label|placeholder|data-caption|title|content)="([^"]*)"', attr, part)
+        out.append(part)
+    html = "".join(out)
+    html = html.replace('"description":"Peinture intérieure et extérieure, façades, rénovation et homme à tout faire pour les aînés à Puidoux et dans le Lavaux."',
+                        '"description":"' + SCHEMA_DESC[lang] + '"')
+    # assets live one level up
+    html = re.sub(r'(?<=["\s,])(img|css|js)/', r"../\1/", html)
+    html = html.replace('href="favicon.svg"', 'href="../favicon.svg"')
+    return html
+
+
+def finish(html, slug, lang):
+    code, locale, prefix = LANGS[lang]
+    up = "../" if prefix else ""
+    page = slug
+    links = {l: (up + LANGS[l][2] + page) or "./" for l in LANGS}
+    if prefix:
+        links["fr"] = "../" + page if page else "../"
+        links[lang] = "./" + page if page else "./"
+    else:
+        links["fr"] = "./" + page if page else "./"
+    for l in LANGS:
+        html = html.replace(f"@@{l.upper()}@@", links[l])
+        html = html.replace(f"@@CUR_{l}@@", ' aria-current="true"' if l == lang else "")
+    alt = "\n".join(f'<link rel="alternate" hreflang="{LANGS[l][0][:2]}" href="{BASE}{LANGS[l][2]}{slug}">' for l in LANGS)
+    alt += f'\n<link rel="alternate" hreflang="x-default" href="{BASE}{slug}">'
+    html = html.replace("@@ALT@@", alt)
+    html = html.replace('<html lang="fr-CH">', f'<html lang="{code}">')
+    html = html.replace('content="fr_CH"', f'content="{locale}"')
+    html = html.replace(f'<link rel="canonical" href="{BASE}{slug}">', f'<link rel="canonical" href="{BASE}{prefix}{slug}">')
+    html = html.replace(f'<meta property="og:url" content="{BASE}{slug}">', f'<meta property="og:url" content="{BASE}{prefix}{slug}">')
+    return html
+
+
+for slug, fname, html in [("", "index.html", home), ("realisations", "realisations.html", real), ("contact", "contact.html", contact)]:
+    (ROOT / fname).write_text(finish(html, slug, "fr"))
+    for lang in ("en", "de"):
+        (ROOT / lang).mkdir(exist_ok=True)
+        (ROOT / lang / fname).write_text(finish(translate(html, lang), slug, lang))
 print("built")
