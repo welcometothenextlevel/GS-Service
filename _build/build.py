@@ -108,6 +108,7 @@ FOOTER = f"""<footer class="footer"><div class="wrap">
         <li><a href="./#services">Peinture</a></li>
         <li><a href="./#services">Rénovation</a></li>
         <li><a href="./#services">Façades</a></li>
+        <li><a href="./#services">Aide aux aînés</a></li>
         <li><a href="realisations">Réalisations</a></li>
       </ul>
     </div>
@@ -137,7 +138,7 @@ LB = """<div class="lb" role="dialog" aria-modal="true" aria-label="Photo agrand
 
 END = '<script src="js/main.js?v=1" defer></script>\n</body>\n</html>\n'
 
-SERVICES = ["Peinture intérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Autre"]
+SERVICES = ["Peinture intérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Homme à tout faire / aide aux aînés", "Autre"]
 
 
 def form(title="Demande de devis"):
@@ -181,7 +182,7 @@ HOURS = """<div class="hours"><table>
 
 SCHEMA = """<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HousePainter","name":"GS Service - Gotsevski",
-"description":"Peinture, façades et rénovation à Puidoux et dans le Lavaux.",
+"description":"Peinture, façades, rénovation et homme à tout faire pour les aînés à Puidoux et dans le Lavaux.",
 "url":"%s","telephone":"+41 76 690 06 63","email":"s.gocevski@outlook.com","image":"%simg/chalet-fini.webp",
 "address":{"@type":"PostalAddress","streetAddress":"Chemin de Publoz 15","postalCode":"1070","addressLocality":"Puidoux","addressRegion":"VD","addressCountry":"CH"},
 "geo":{"@type":"GeoCoordinates","latitude":46.4907,"longitude":6.7631},
@@ -206,6 +207,8 @@ svc_rows = [
      ["Enduits & lissage", "Combles", "Salles de bain", "Terrasses bois"], "combles-renoves", "Combles rénovés avec parquet et murs blancs"),
     ("Façades", "Façades en bois, crépi et avant-toits : échafaudage sécurisé, préparation et protection des abords, puis traitement et peinture. Votre maison retrouve son allure, et elle est protégée pour les années à venir.",
      ["Façades bois", "Crépi", "Avant-toits", "Volets & fenêtres", "Échafaudage"], "chalet-fini", "Chalet en bois après travaux de façade, avec le véhicule GS Service"),
+    ("Homme à tout faire · Aide aux aînés", "Pour les personnes âgées qui ont besoin d’un coup de main à la maison : petites réparations, retouches de peinture, montage, réglages, et tous nos services réalisés avec patience et respect. On s’occupe de tout, vous n’avez qu’à appeler.",
+     ["Petites réparations", "Retouches de peinture", "Montage & réglages", "Coup de main à domicile"], "porte-repeinte", "Porte ancienne remise en état"),
 ]
 
 svc_html = "\n".join(
@@ -217,11 +220,11 @@ svc_html = "\n".join(
 </article>""" for i, (t, d, tags, im, alt) in enumerate(svc_rows)
 )
 
-ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Façades bois", "Rénovation", "Crépi", "Avant-toits", "Boiseries", "Plafonds", "Salles de bain"])
+ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Façades bois", "Rénovation", "Crépi", "Avant-toits", "Boiseries", "Aide aux aînés", "Plafonds", "Salles de bain"])
 
 home = head(
     "GS Service – Gotsevski | Peintre, façades & rénovation à Puidoux",
-    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture intérieure, façades et rénovation. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
+    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture intérieure, façades, rénovation et homme à tout faire pour les aînés. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
     "", SCHEMA) + header("home") + f"""<main>
 <section class="hero"><div class="wrap hero-grid">
   <div>
@@ -249,7 +252,7 @@ home = head(
 
 <section class="section" id="services"><div class="wrap">
   <div class="section-head">
-    <div><span class="eyebrow">Prestations</span><h2>Peinture, façades, rénovation. Trois métiers, une seule équipe.</h2></div>
+    <div><span class="eyebrow">Prestations</span><h2>Peinture, façades, rénovation et coup de main à domicile. Une seule équipe.</h2></div>
     <p>Que vous rénoviez votre espace ou vouliez simplement lui redonner un coup de neuf, dedans comme dehors, on vous accompagne à chaque étape.</p>
   </div>
   <div class="svc-list">
@@ -414,7 +417,7 @@ real = head(
 # ---------- CONTACT ----------
 contact = head(
     "Contact & devis – GS Service Gotsevski, Puidoux",
-    "Contactez GS Service Gotsevski à Puidoux : 076 690 06 63, WhatsApp ou formulaire de devis. Peinture, façades, rénovation. Lun–Sam 8h–17h.",
+    "Contactez GS Service Gotsevski à Puidoux : 076 690 06 63, WhatsApp ou formulaire de devis. Peinture, façades, rénovation, aide aux aînés. Lun–Sam 8h–17h.",
     "contact", SCHEMA) + header("contact") + f"""<main>
 <section class="page-hero"><div class="wrap">
   <span class="eyebrow">Contact & devis</span>
