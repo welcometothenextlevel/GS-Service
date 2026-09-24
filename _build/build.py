@@ -16,7 +16,7 @@ I = {
     "doc": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>',
 }
 
-LOGO_MARK = '<span class="logo-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><text x="3" y="25" font-family="Archivo,sans-serif" font-weight="800" font-size="21" fill="#fff" style="font-stretch:80%">GS</text><path d="M4 31c6-2.4 14-3 32-1.6" stroke="#5cbf4a" stroke-width="4" stroke-linecap="round" fill="none"/></svg></span>'
+LOGO_MARK = '<span class="logo-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><text x="3" y="25" font-family="Archivo,sans-serif" font-weight="800" font-size="21" fill="#131a16" style="font-stretch:80%">GS</text><path d="M4 31c6-2.4 14-3 32-1.6" stroke="#5cbf4a" stroke-width="4" stroke-linecap="round" fill="none"/></svg></span>'
 
 
 def head(title, desc, path, extra=""):
@@ -40,7 +40,7 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
 {extra}</head>
 <body>
 """
@@ -71,7 +71,7 @@ def header(active):
 
 
 BAND = f"""<section class="band"><div class="wrap">
-  <h2>Un projet de peinture, de rénovation ou un déménagement ? Parlons-en.</h2>
+  <h2>Un projet de peinture, de façade ou de rénovation ? Parlons-en.</h2>
   <div class="acts">
     <a class="btn btn-ink" href="{TEL}">{I['phone']} 076 690 06 63</a>
     <a class="btn btn-line" href="contact">Demander un devis {I['arrow']}</a>
@@ -83,7 +83,7 @@ FOOTER = f"""<footer class="footer"><div class="wrap">
   <div class="footer-grid">
     <div>
       <a class="logo" href="./">{LOGO_MARK}<span class="logo-text"><b style="color:#fff">GS Service</b><span>Gotsevski · Puidoux</span></span></a>
-      <p style="margin-top:18px;max-width:22em">Peinture, rénovation, déménagement, transport et nettoyage. Un seul interlocuteur, du premier coup de fil au nettoyage final.</p>
+      <p style="margin-top:18px;max-width:22em">Peinture, façades et rénovation dans le Lavaux. Un seul interlocuteur, du premier coup de fil au chantier rendu propre.</p>
     </div>
     <div>
       <h4>Contact</h4>
@@ -107,8 +107,7 @@ FOOTER = f"""<footer class="footer"><div class="wrap">
       <ul>
         <li><a href="./#services">Peinture</a></li>
         <li><a href="./#services">Rénovation</a></li>
-        <li><a href="./#services">Déménagement & transport</a></li>
-        <li><a href="./#services">Nettoyage & débarras</a></li>
+        <li><a href="./#services">Façades</a></li>
         <li><a href="realisations">Réalisations</a></li>
       </ul>
     </div>
@@ -138,7 +137,7 @@ LB = """<div class="lb" role="dialog" aria-modal="true" aria-label="Photo agrand
 
 END = '<script src="js/main.js?v=1" defer></script>\n</body>\n</html>\n'
 
-SERVICES = ["Peinture", "Rénovation", "Déménagement", "Transport", "Nettoyage", "Débarras", "Jardinage", "Autre"]
+SERVICES = ["Peinture intérieure", "Façade", "Rénovation", "Boiseries / avant-toit", "Autre"]
 
 
 def form(title="Demande de devis"):
@@ -182,7 +181,7 @@ HOURS = """<div class="hours"><table>
 
 SCHEMA = """<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HousePainter","name":"GS Service - Gotsevski",
-"description":"Peinture, rénovation, déménagement, transport et nettoyage à Puidoux et dans le Lavaux.",
+"description":"Peinture, façades et rénovation à Puidoux et dans le Lavaux.",
 "url":"%s","telephone":"+41 76 690 06 63","email":"s.gocevski@outlook.com","image":"%simg/chalet-fini.webp",
 "address":{"@type":"PostalAddress","streetAddress":"Chemin de Publoz 15","postalCode":"1070","addressLocality":"Puidoux","addressRegion":"VD","addressCountry":"CH"},
 "geo":{"@type":"GeoCoordinates","latitude":46.4907,"longitude":6.7631},
@@ -201,18 +200,12 @@ def img(name, alt, cls="", sizes="100vw", eager=False):
 
 # ---------- HOME ----------
 svc_rows = [
-    ("Peinture", "Intérieur et extérieur : murs, plafonds, façades, boiseries, portes. Pour une ambiance apaisante, une touche audacieuse ou simplement un coup de frais.",
-     ["Murs & plafonds", "Façades", "Boiseries & avant-toits", "Portes"], "plafond-peinture", "Plafond et poutres repeints en blanc"),
+    ("Peinture", "Murs, plafonds, boiseries, portes : peinture intérieure soignée, sur supports bien préparés. Pour une ambiance apaisante, une touche audacieuse ou simplement un coup de frais.",
+     ["Murs & plafonds", "Boiseries", "Portes", "Cages d’escalier"], "plafond-peinture", "Plafond et poutres repeints en blanc"),
     ("Rénovation", "Des petites retouches aux projets d’envergure : préparation des supports, enduits, finitions. Une équipe qualifiée qui donne vie à vos idées.",
      ["Enduits & lissage", "Combles", "Salles de bain", "Terrasses bois"], "combles-renoves", "Combles rénovés avec parquet et murs blancs"),
-    ("Déménagement", "Un déménagement sans stress. Vos biens sont traités comme s’ils étaient les nôtres, jusqu’à votre nouveau chez-vous.",
-     ["Appartements & maisons", "Vider un logement", "Clé en main"], "sejour-fini", "Pièce vide et propre après déménagement"),
-    ("Transport", "Objets volumineux, meubles, marchandises : livrés à bon port, en toute sécurité. Ponctualité et fiabilité avant tout.",
-     ["Meubles", "Objets volumineux", "Livraisons"], "chalet-fini", "Le véhicule GS Service devant un chalet"),
-    ("Nettoyage & débarras", "Nettoyage de fin de bail ou de fin de chantier, appartement vidé, passage à la déchèterie. Vous récupérez un espace propre et prêt à être habité.",
-     ["Fin de bail", "Fin de chantier", "Débarras & déchèterie"], "buanderie", "Salle d’eau et buanderie propres"),
-    ("Jardinage", "Entretien et création de jardin, taille de haies, tronçonnage. Pour que l’extérieur suive le reste de la maison.",
-     ["Entretien", "Taille de haies", "Tronçonnage"], "terrasse-bois", "Terrasse en bois avec haie de buis"),
+    ("Façades", "Façades en bois, crépi et avant-toits : échafaudage sécurisé, préparation et protection des abords, puis traitement et peinture. Votre maison retrouve son allure, et elle est protégée pour les années à venir.",
+     ["Façades bois", "Crépi", "Avant-toits", "Volets & fenêtres", "Échafaudage"], "chalet-fini", "Chalet en bois après travaux de façade, avec le véhicule GS Service"),
 ]
 
 svc_html = "\n".join(
@@ -224,17 +217,17 @@ svc_html = "\n".join(
 </article>""" for i, (t, d, tags, im, alt) in enumerate(svc_rows)
 )
 
-ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Façades", "Rénovation", "Déménagement", "Transport", "Nettoyage", "Débarras", "Jardinage"])
+ticker_items = "".join(f"<span>{s}</span>" for s in ["Peinture intérieure", "Façades bois", "Rénovation", "Crépi", "Avant-toits", "Boiseries", "Plafonds", "Salles de bain"])
 
 home = head(
-    "GS Service – Gotsevski | Peinture, rénovation & déménagement à Puidoux",
-    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture, rénovation, déménagement, transport et nettoyage. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
+    "GS Service – Gotsevski | Peintre, façades & rénovation à Puidoux",
+    "Peintre et entreprise de rénovation à Puidoux (Lavaux, VD). Peinture intérieure, façades et rénovation. 5,0/5 sur 4 avis. Appelez le 076 690 06 63.",
     "", SCHEMA) + header("home") + f"""<main>
 <section class="hero"><div class="wrap hero-grid">
   <div>
-    <span class="eyebrow">Peintre & rénovation · Puidoux VD</span>
-    <h1>Peinture, rénovation, déménagement. <span class="stroke">Bien fait</span>, du début à la fin.</h1>
-    <p class="lead">GS Service Gotsevski, c’est votre partenaire tout-en-un dans le Lavaux : on repeint, on rénove, on déménage, on transporte et on rend les lieux propres. Un seul numéro à appeler.</p>
+    <span class="eyebrow">Peinture · Façades · Rénovation · Puidoux</span>
+    <h1>Peinture, façades, rénovation. <span class="stroke">Bien fait</span>, du début à la fin.</h1>
+    <p class="lead">GS Service Gotsevski, c’est votre partenaire tout-en-un dans le Lavaux : on repeint vos intérieurs, on remet vos façades à neuf et on rénove vos pièces. Un seul numéro à appeler.</p>
     <div class="hero-actions">
       <a class="btn btn-green" href="{TEL}">{I['phone']} Appeler le 076 690 06 63</a>
       <a class="btn btn-line" href="#devis">Demander un devis {I['arrow']}</a>
@@ -256,8 +249,8 @@ home = head(
 
 <section class="section" id="services"><div class="wrap">
   <div class="section-head">
-    <div><span class="eyebrow">Prestations</span><h2>Tout ce qu’il faut pour votre maison, avec une seule équipe.</h2></div>
-    <p>Que vous changiez de domicile, rénoviez votre espace ou vouliez simplement lui redonner un coup de neuf, on vous accompagne à chaque étape.</p>
+    <div><span class="eyebrow">Prestations</span><h2>Peinture, façades, rénovation. Trois métiers, une seule équipe.</h2></div>
+    <p>Que vous rénoviez votre espace ou vouliez simplement lui redonner un coup de neuf, dedans comme dehors, on vous accompagne à chaque étape.</p>
   </div>
   <div class="svc-list">
 {svc_html}
@@ -315,7 +308,7 @@ home = head(
     </div>
     <div>
       <figure class="quote rv">
-        <blockquote>Très efficace, ponctuel et travail sérieux ; c’est eux qui ont fait chez moi déménagement, vider l’appartement, aller déchèterie et nettoyage ; grâce à eux j’ai bien déménagé ! Merci beaucoup et très contente de leur service !</blockquote>
+        <blockquote>Très efficace, ponctuel et travail sérieux […] Merci beaucoup et très contente de leur service !</blockquote>
         <figcaption><span class="avatar">S</span><span><b>Je recommande cette entreprise !</b>shih-yi.huang · avril 2024 · ★★★★★</span></figcaption>
       </figure>
       <div class="mini-reviews">
@@ -331,7 +324,7 @@ home = head(
   <div class="rv">
     <span class="eyebrow">L’entreprise</span>
     <h2>Une entreprise locale, installée à Puidoux.</h2>
-    <p>GS Service Gotsevski est une entreprise individuelle inscrite au registre du commerce, basée Chemin de Publoz 15 à Puidoux. Bien plus qu’une entreprise de déménagement : une solution complète pour la logistique, l’entretien et la transformation de votre logement.</p>
+    <p>GS Service Gotsevski est une entreprise individuelle inscrite au registre du commerce, basée Chemin de Publoz 15 à Puidoux. Peinture intérieure, façades et rénovation : une équipe qui prépare, protège et finit proprement chaque chantier.</p>
     <p>Notre engagement envers votre satisfaction et la qualité du travail est inébranlable. Faites-nous confiance pour chaque aspect de votre projet.</p>
     <div class="towns"><span>Puidoux</span><span>Chexbres</span><span>Rivaz</span><span>Saint-Saphorin</span><span>Lavaux & environs</span></div>
     <dl class="facts">
@@ -421,7 +414,7 @@ real = head(
 # ---------- CONTACT ----------
 contact = head(
     "Contact & devis – GS Service Gotsevski, Puidoux",
-    "Contactez GS Service Gotsevski à Puidoux : 076 690 06 63, WhatsApp ou formulaire de devis. Peinture, rénovation, déménagement, nettoyage. Lun–Sam 8h–17h.",
+    "Contactez GS Service Gotsevski à Puidoux : 076 690 06 63, WhatsApp ou formulaire de devis. Peinture, façades, rénovation. Lun–Sam 8h–17h.",
     "contact", SCHEMA) + header("contact") + f"""<main>
 <section class="page-hero"><div class="wrap">
   <span class="eyebrow">Contact & devis</span>
