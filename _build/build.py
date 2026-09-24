@@ -16,7 +16,7 @@ I = {
     "doc": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>',
 }
 
-LOGO_MARK = '<span class="logo-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><text x="3" y="25" font-family="Archivo,sans-serif" font-weight="800" font-size="21" fill="#131a16" style="font-stretch:80%">GS</text><path d="M4 31c6-2.4 14-3 32-1.6" stroke="#1f7a35" stroke-width="4" stroke-linecap="round" fill="none"/></svg></span>'
+LOGO_MARK = '<span class="logo-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><text x="3" y="25" font-family="Archivo,sans-serif" font-weight="800" font-size="21" fill="#131a16" style="font-stretch:80%">GS</text><path d="M4 31c6-2.4 14-3 32-1.6" stroke="#131a16" stroke-width="4" stroke-linecap="round" fill="none"/></svg></span>'
 
 
 def head(title, desc, path, extra=""):
