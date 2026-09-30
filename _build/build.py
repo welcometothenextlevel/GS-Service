@@ -43,7 +43,7 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
 @@ALT@@
 {extra}</head>
 <body>
@@ -122,6 +122,7 @@ FOOTER = f"""<footer class="footer"><div class="wrap">
   <div class="footer-bottom">
     <span>© <span data-year>2026</span> GS Service – Gotsevski · Entreprise individuelle · IDE CHE-290.495.935</span>
     <span>Paiement sur facture ou TWINT</span>
+    <span class="credit">Sponsorisé par <a href="https://nextdigitalevel.com/">Next Digital Level</a></span>
   </div>
 </div></footer>
 """

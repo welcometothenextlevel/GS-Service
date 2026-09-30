@@ -228,6 +228,7 @@ T = [
 ("Dimanche · fermé", "Sunday · closed", "Sonntag · geschlossen"),
 ("Peinture", "Painting", "Malerarbeiten"),
 ("GS Service – Gotsevski · Entreprise individuelle · IDE CHE-290.495.935", "GS Service – Gotsevski · Sole proprietorship · UID CHE-290.495.935", "GS Service – Gotsevski · Einzelunternehmen · UID CHE-290.495.935"),
+("Sponsorisé par", "Sponsored by", "Gesponsert von"),
 ("Paiement sur facture ou TWINT", "Pay by invoice or TWINT", "Bezahlung per Rechnung oder TWINT"),
 ("Contact rapide", "Quick contact", "Schnellkontakt"),
 ("Écrire sur WhatsApp", "Message on WhatsApp", "Auf WhatsApp schreiben"),
