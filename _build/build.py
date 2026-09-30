@@ -122,7 +122,7 @@ FOOTER = f"""<footer class="footer"><div class="wrap">
   <div class="footer-bottom">
     <span>© <span data-year>2026</span> GS Service – Gotsevski · Entreprise individuelle · IDE CHE-290.495.935</span>
     <span>Paiement sur facture ou TWINT</span>
-    <span class="credit">Sponsorisé par <a href="https://nextdigitalevel.com/">Next Digital Level</a></span>
+    <span class="credit">Création de site internet : <a href="https://nextdigitalevel.com/">Next Digital Level</a></span>
   </div>
 </div></footer>
 """
